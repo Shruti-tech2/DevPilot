@@ -14,7 +14,7 @@ import java.util.Map;
 @RestController
 
 public class WebhookController {
-    static final String SIGNATURE = "X-Hub-Signature-256";
+    static final String SIGNATURE = "x-hub-signature-256";
     AuthService authService;
     ObjectMapper mapper;
     WebhookController(){
@@ -36,7 +36,7 @@ public class WebhookController {
 
             GitHubPushEvent payload =
                     mapper.readValue(request, GitHubPushEvent.class);
-            System.out.println("Request: "+request);
+            System.out.println("Request: "+payload);
 
             return ResponseEntity.accepted().body("Webhook accepted github");
         } catch (Exception e) {
