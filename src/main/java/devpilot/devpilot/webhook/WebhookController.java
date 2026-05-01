@@ -10,7 +10,7 @@ public class WebhookController {
     @PostMapping("/devpilot/webhook_listener")
     public ResponseEntity<Object> webhookListener(@RequestBody GitHubPushEvent request)
     {
-        System.out.println("Request:  "+request);
+        System.out.println("Request: "+request);
         return ResponseEntity.accepted().body("Webhook accepted github");
     }
 }
