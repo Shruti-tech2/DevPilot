@@ -33,6 +33,7 @@ public class AuthService {
         String hashKey = getHashKey();
         try{
             String hmacSign = generateHmac(payload, hashKey);
+            System.out.println("Hmac signature: "+hmacSign);
             return hmacSign == hmacSignature;
         }catch (Exception e){
             System.out.println("HMAC Authentication Fail with Reason: "+e.getMessage());
