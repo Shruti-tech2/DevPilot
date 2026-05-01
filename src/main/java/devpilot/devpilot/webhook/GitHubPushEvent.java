@@ -1,9 +1,11 @@
 package devpilot.devpilot.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import java.util.List;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GitHubPushEvent {
 
     private String ref;
@@ -21,6 +23,7 @@ public class GitHubPushEvent {
     private Commit head_commit;
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Repository {
         private Long id;
         private String name;
@@ -29,18 +32,21 @@ public class GitHubPushEvent {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Pusher {
         private String name;
         private String email;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Sender {
         private String login;
         private Long id;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Commit {
         private String id;
         private String message;
@@ -54,6 +60,7 @@ public class GitHubPushEvent {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Author {
         private String name;
         private String email;
