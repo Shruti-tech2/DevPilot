@@ -2,6 +2,7 @@ package devpilot.devpilot.webhook;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import devpilot.devpilot.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +16,10 @@ import java.util.Map;
 
 public class WebhookController {
     static final String SIGNATURE = "x-hub-signature-256";
+    @Autowired
     AuthService authService;
     ObjectMapper mapper;
     WebhookController(){
-        authService = new AuthService();
         mapper = new ObjectMapper();
     }
     @PostMapping("/devpilot/webhook_listener")
