@@ -1,22 +1,17 @@
 package devpilot.devpilot;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 
+@Service
 public class AuthService {
     @Value("${github.secret}")
     String GITHUB_SECRET_KEY;
     private static final String HMAC_ALGO = "HmacSHA256";
-
-    private Map<String, String> map;
-    public AuthService(){
-        map = new HashMap<>();
-    }
 
     private static String generateHmac(String data, String secret) throws Exception {
 
@@ -51,6 +46,7 @@ public class AuthService {
     }
 
     private String getHashKey(){
+        System.out.println("Secert: "+GITHUB_SECRET_KEY);
         return GITHUB_SECRET_KEY;
     }
 }
